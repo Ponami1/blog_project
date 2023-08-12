@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block  title %}
+    Login Page
+{% endblock  %}
+
+{% block  content %}
+ 
+<h1 class="mb-8 text-8xl"> {{page_user.user.username}}</h1> 
+<div class=" px-12">
+  <ul class="flex gap-8 mt-16">
+    <li class=" text-2xl">Home</li>
+    <li class=" text-2xl">About</li>
+  </ul>
+</div>
+
+<hr />
+
+{{page_user.user.profile.bio|safe}}
+{{page_user.user.first_name}}{{page_user.user.last_name}}
+<img class="w-8 h-8 rounded-full" src="{{page_user.user.profile.profile_image.url}}" alt="{{user.first_name}}" />
+{% for items in post %}
+  {{items.page_user.title}}
+{% endfor %}
+
+{% endblock  %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block  title %}
+    Login Page
+{% endblock  %}
+
+{% block  content %}
+
+
+
+
+
+<hr />
+<article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert h-full mt-5">
+  <header class="mb-4 lg:mb-6 not-format">
+      <address class="flex items-center mb-6 not-italic">
+          <div class="inline-flex items-center mr-3 text-sm text-gray-900 ">
+              <img class="mr-4 w-32 h-32 rounded-full" src="{{page_user.user.profile.profile_image.url}}" alt="{{user.first_name}}">
+              
+              <div>
+                  <h2 class="text-xl font-bold text-gray-900 ">{{page_user.user.first_name}} - {{page_user.user.last_name}}</h2>
+                  <p class="mt-4">Bio: {{page_user.user.profile.bio|safe}}</p>
+              </div>
+
+          </div>
+      </address>
+      
+      {% if user.is_authenticated %}
+      {% if user.profile.id  == page_user.id%}<br/>
+      <a class="text-base font-light text-gray-500 hover:text-blue-500" href="{% url 'profile_edit' page_user.id %}"> edit</a>
+      </div>
+      <br />
+      {% endif %}
+      {% if user.is_superuser %}
+      <a class="text-base font-light text-gray-500 hover:text-blue-500" href="{% url 'category' %}"> Add Category</a>
+      {% endif %}
+      {% endif %}
+
+  </header>
+
+{% endblock  %}

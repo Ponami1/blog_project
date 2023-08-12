@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block  title %}
+    
+{% endblock  %}
+
+{% block  content %}
+{% if user.is_superuser %}
+<form method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit"> Submit </button>
+</form>
+{% else %}
+<h2> Sorry you are not allowed Here</h2>
+
+{% endif %}
+{% endblock  %}
